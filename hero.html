@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>YASH JEWELRY — Every Detail Matters</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Cormorant+Garamond:ital,wght@1,300;1,400;1,500&family=Jost:wght@200;300;400&display=swap" rel="stylesheet">
+
+  <style>
+    /* ================================================
+       YASH JEWELRY — Hero Showcase
+       Direction Artistique : luxe africain contemporain
+       Split éditorial asymétrique / sans template
+       ================================================ */
+
+    :root {
+      --cream:       #F3ECDD;
+      --cream-2:     #EAE1CC;
+      --ink:         #1A1610;
+      --gold:        #C8A96E;
+      --gold-light:  #E8CE93;
+      --gold-deep:   #9C7A3C;
+      --noir:        #0D0D0D;
+      --blanc:       #F7F2E7;
+      --muted:       rgba(26, 22, 16, 0.42);
+    }
+
+    *, *::before, *::after {
+      margin: 0; padding: 0; box-sizing: border-box;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--cream);
+      color: var(--ink);
+      font-family: 'Jost', sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* Grain — qualité papier imprimé */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 9998;
+      opacity: 0.32;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
+    }
+
+
+    /* ─────────────────────────────────────────
+       NAVIGATION
+    ───────────────────────────────────────── */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 200;
+      padding: 30px 56px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: padding 0.45s ease, background 0.45s ease, border-color 0.45s ease;
+      border-bottom: 1px solid transparent;
+    }
+
+    .nav.scrolled {
+      padding: 18px 56px;
+      background: rgba(243, 236, 221, 0.96);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border-bottom-color: rgba(200, 169, 110, 0.18);
+    }
+
+    /* Brand */
+    .nav-brand {
+      display: flex;
+      align-items: baseline;
+      gap: 11px;
+      text-decoration: none;
+    }
+
+    .nav-brand-name {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 19px;
+      letter-spacing: 0.16em;
+      color: var(--gold-light);
+      transition: color 0.45s ease;
+      line-height: 1;
+    }
+
+    .nav.scrolled .nav-brand-name { color: var(--ink); }
+
+    .nav-brand-sep {
+      width: 1px;
+      height: 13px;
+      background: var(--gold);
+      opacity: 0.45;
+      flex-shrink: 0;
+      align-self: center;
+    }
+
+    .nav-brand-sub {
+      font-family: 'Jost', sans-serif;
+      font-weight: 200;
+      font-size: 8.5px;
+      letter-spacing: 0.52em;
+      text-transform: uppercase;
+      color: var(--gold);
+      transition: color 0.45s ease;
+      line-height: 1;
+    }
+
+    .nav.scrolled .nav-brand-sub { color: var(--gold-deep); }
+
+    /* Links */
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      gap: 42px;
+      list-style: none;
+    }
+
+    .nav-menu a {
+      font-family: 'Jost', sans-serif;
+      font-weight: 300;
+      font-size: 10px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(243, 236, 221, 0.78);
+      text-decoration: none;
+      position: relative;
+      transition: color 0.3s ease;
+    }
+
+    .nav.scrolled .nav-menu a { color: var(--muted); }
+
+    .nav-menu a:not(.nav-boutique)::after {
+      content: '';
+      position: absolute;
+      bottom: -2px; left: 0; right: 0;
+      height: 1px;
+      background: var(--gold);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.4s ease;
+    }
+
+    .nav-menu a:hover::after { transform: scaleX(1); }
+    .nav-menu a:hover { color: var(--gold-light) !important; }
+    .nav.scrolled .nav-menu a:hover { color: var(--gold) !important; }
+
+    .nav-boutique {
+      border: 1px solid var(--gold);
+      padding: 8px 22px;
+      color: var(--gold) !important;
+      transition: background 0.35s ease, color 0.35s ease;
+    }
+
+    .nav-boutique:hover {
+      background: var(--gold) !important;
+      color: var(--noir) !important;
+    }
+
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+    }
+
+    .nav-toggle span {
+      display: block;
+      width: 22px;
+      height: 1px;
+      background: var(--gold-light);
+      transition: background 0.45s ease;
+    }
+
+    .nav.scrolled .nav-toggle span { background: var(--ink); }
+
+
+    /* ─────────────────────────────────────────
+       HERO — Split éditorial
+    ───────────────────────────────────────── */
+    .hero {
+      position: relative;
+      height: 100vh;
+      min-height: 680px;
+      display: grid;
+      grid-template-columns: 43% 57%;
+      overflow: hidden;
+    }
+
+
+    /* ── Panel gauche : crème éditorial ── */
+    .hero-left {
+      position: relative;
+      background: var(--cream);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 0 48px 0 68px;
+      z-index: 2;
+      overflow: hidden;
+    }
+
+    /* Rosette arabesque — coin supérieur droit */
+    /* Mon ajout DA : motif géométrique ouest-africain, très discret */
+    .hero-ornament {
+      position: absolute;
+      top: 72px;
+      right: -16px;
+      width: 116px;
+      height: 116px;
+      opacity: 0.058;
+      pointer-events: none;
+      transform: rotate(12deg);
+    }
+
+    /* YJ Monogramme filigrane — fond du panel */
+    .hero-filigrane {
+      position: absolute;
+      bottom: -12%;
+      left: -10%;
+      width: 82%;
+      opacity: 0.05;
+      pointer-events: none;
+      transform: rotate(-4deg);
+    }
+
+    /* Thin line bas du panel gauche — séparateur signature */
+    .hero-left::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 68px; right: 0;
+      height: 1px;
+      background: linear-gradient(to right, var(--gold) 0%, transparent 80%);
+      opacity: 0.35;
+    }
+
+    /* Eyebrow */
+    .hero-eyebrow {
+      font-family: 'Jost', sans-serif;
+      font-weight: 200;
+      font-size: 9px;
+      letter-spacing: 0.44em;
+      text-transform: uppercase;
+      color: var(--gold-deep);
+      margin-bottom: 18px;
+
+      opacity: 0;
+      animation: revealUp 0.9s 0.12s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+
+    /* ── ◆ ── */
+    .hero-divider {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 20px;
+
+      opacity: 0;
+      animation: revealUp 0.9s 0.26s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+
+    .divider-rule {
+      flex: 0 0 50px;
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--gold));
+    }
+
+    .divider-rule.rev {
+      background: linear-gradient(to left, transparent, var(--gold));
+    }
+
+    .divider-gem {
+      font-size: 7px;
+      color: var(--gold);
+      line-height: 1;
+    }
+
+    /* YASH */
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-weight: 900;
+      font-size: clamp(88px, 9.6vw, 152px);
+      line-height: 0.88;
+      letter-spacing: -0.01em;
+      color: var(--ink);
+      margin-bottom: 6px;
+
+      opacity: 0;
+      animation: revealUp 1s 0.38s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+
+    /* JEWELRY */
+    .hero-subtitle {
+      font-family: 'Jost', sans-serif;
+      font-weight: 200;
+      font-size: clamp(14px, 1.6vw, 24px);
+      letter-spacing: 0.58em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 34px;
+
+      opacity: 0;
+      animation: revealUp 1s 0.52s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+
+    /* Cormorant tagline */
+    .hero-tagline {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-weight: 300;
+      font-size: clamp(13.5px, 1.2vw, 17.5px);
+      line-height: 1.78;
+      color: rgba(26, 22, 16, 0.58);
+      max-width: 310px;
+      margin-bottom: 46px;
+
+      opacity: 0;
+      animation: revealUp 1s 0.66s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+
+    /* CTA */
+    .hero-cta {
+      display: inline-flex;
+      flex-direction: column;
+      gap: 7px;
+      text-decoration: none;
+      align-self: flex-start;
+
+      opacity: 0;
+      animation: revealUp 1s 0.80s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+
+    .hero-cta-label {
+      font-family: 'Jost', sans-serif;
+      font-weight: 300;
+      font-size: 10px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--ink);
+      transition: color 0.35s ease;
+    }
+
+    .hero-cta-bar {
+      height: 1px;
+      background: var(--gold);
+      transform-origin: left;
+      transform: scaleX(0.38);
+      transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .hero-cta:hover .hero-cta-bar { transform: scaleX(1); }
+    .hero-cta:hover .hero-cta-label { color: var(--gold-deep); }
+
+    /* Meta bas gauche */
+    .hero-meta {
+      position: absolute;
+      bottom: 44px;
+      left: 68px;
+
+      opacity: 0;
+      animation: revealFade 1s 1.1s forwards;
+    }
+
+    .hero-meta p {
+      font-family: 'Jost', sans-serif;
+      font-weight: 200;
+      font-size: 8px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+
+    /* ── Panel droit : image ── */
+    .hero-right {
+      position: relative;
+      overflow: hidden;
+      /* Coupe diagonale sur le bord gauche — casse la grille droite */
+      clip-path: polygon(4.5% 0, 100% 0, 100% 100%, 0 100%);
+    }
+
+    .hero-image {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      /* Focus sur le portrait de la femme — haut-gauche du composite */
+      object-position: 8% 2%;
+      transform: scale(1.05);
+      animation: imageReveal 2.4s 0s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+
+    /* Vignette gauche — transition douce crème → image */
+    .hero-right::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to right,
+        rgba(20, 18, 16, 0.28) 0%,
+        rgba(20, 18, 16, 0.06) 30%,
+        transparent 55%
+      );
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    /* Cadres d'angle — motif catalogue */
+    .hero-frames {
+      position: absolute;
+      inset: 30px;
+      z-index: 2;
+      pointer-events: none;
+
+      opacity: 0;
+      animation: revealFade 1.2s 1.3s forwards;
+    }
+
+    .frame-corner {
+      position: absolute;
+      width: 24px;
+      height: 24px;
+    }
+
+    .frame-corner::before,
+    .frame-corner::after {
+      content: '';
+      position: absolute;
+      background: var(--gold-light);
+      opacity: 0.62;
+    }
+
+    /* horizontal */
+    .frame-corner::before { width: 100%; height: 1px; top: 0; left: 0; }
+    /* vertical */
+    .frame-corner::after  { width: 1px; height: 100%; top: 0; left: 0; }
+
+    .frame-corner.tl { top: 0; left: 0; }
+    .frame-corner.tr { top: 0; right: 0; transform: scaleX(-1); }
+    .frame-corner.bl { bottom: 0; left: 0; transform: scaleY(-1); }
+    .frame-corner.br { bottom: 0; right: 0; transform: scale(-1); }
+
+    /* Légende image */
+    .hero-caption {
+      position: absolute;
+      bottom: 44px;
+      right: 36px;
+      z-index: 3;
+      text-align: right;
+
+      opacity: 0;
+      animation: revealFade 1s 1.65s forwards;
+    }
+
+    .hero-caption p {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 10.5px;
+      letter-spacing: 0.18em;
+      color: rgba(247, 242, 231, 0.48);
+      line-height: 1.7;
+    }
+
+    /* Indicateur scroll */
+    .scroll-cue {
+      position: absolute;
+      bottom: 38px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 3;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+
+      opacity: 0;
+      animation: revealFade 1s 1.9s forwards;
+    }
+
+    .scroll-cue-line {
+      width: 1px;
+      height: 36px;
+      background: linear-gradient(to bottom, transparent, rgba(200, 169, 110, 0.55));
+      animation: scrollPulse 2.4s 1.9s ease-in-out infinite;
+    }
+
+    .scroll-cue-text {
+      font-family: 'Jost', sans-serif;
+      font-weight: 200;
+      font-size: 7px;
+      letter-spacing: 0.38em;
+      text-transform: uppercase;
+      color: rgba(200, 169, 110, 0.45);
+    }
+
+
+    /* ─────────────────────────────────────────
+       KEYFRAMES
+    ───────────────────────────────────────── */
+    @keyframes revealUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes revealFade {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+
+    @keyframes imageReveal {
+      from { transform: scale(1.05); }
+      to   { transform: scale(1.0); }
+    }
+
+    @keyframes scrollPulse {
+      0%, 100% { opacity: 0.38; transform: translateY(0); }
+      55%       { opacity: 0.85; transform: translateY(5px); }
+    }
+
+
+    /* ─────────────────────────────────────────
+       RESPONSIVE
+    ───────────────────────────────────────── */
+    @media (max-width: 960px) {
+      .nav { padding: 22px 28px; }
+      .nav.scrolled { padding: 15px 28px; }
+      .nav-menu { display: none; }
+      .nav-toggle { display: flex; }
+
+      .hero {
+        grid-template-columns: 1fr;
+        grid-template-rows: 54vh 1fr;
+        height: auto;
+        min-height: 100svh;
+      }
+
+      .hero-right {
+        order: -1;
+        clip-path: none;
+      }
+
+      .hero-left {
+        padding: 48px 28px 80px;
+        justify-content: flex-start;
+      }
+
+      .hero-left::after { left: 28px; }
+
+      .hero-title {
+        font-size: clamp(76px, 21vw, 108px);
+      }
+
+      .hero-subtitle {
+        font-size: 13.5px;
+        letter-spacing: 0.44em;
+      }
+
+      .hero-tagline {
+        max-width: 100%;
+        font-size: 15px;
+      }
+
+      .hero-meta {
+        left: 28px;
+        bottom: 28px;
+      }
+
+      .hero-ornament { display: none; }
+    }
+
+    @media (max-width: 480px) {
+      .hero-title { font-size: 68px; }
+      .hero-subtitle { font-size: 12px; letter-spacing: 0.36em; }
+      .hero-tagline { font-size: 14px; }
+    }
+
+  </style>
+</head>
+<body>
+
+
+<!-- ═══════════════════════════════════════
+     NAVIGATION
+═══════════════════════════════════════ -->
+<nav class="nav" id="nav">
+  <a href="#" class="nav-brand">
+    <span class="nav-brand-name">YASH</span>
+    <span class="nav-brand-sep"></span>
+    <span class="nav-brand-sub">Jewelry</span>
+  </a>
+
+  <ul class="nav-menu">
+    <li><a href="#">Collections</a></li>
+    <li><a href="#">Femme</a></li>
+    <li><a href="#">Homme</a></li>
+    <li><a href="#">Notre Histoire</a></li>
+    <li><a href="#" class="nav-boutique">Boutique</a></li>
+  </ul>
+
+  <button class="nav-toggle" aria-label="Ouvrir le menu" id="navToggle">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+
+<!-- ═══════════════════════════════════════
+     HERO
+═══════════════════════════════════════ -->
+<section class="hero">
+
+  <!-- ─── Panel gauche : crème ─── -->
+  <div class="hero-left">
+
+    <!--
+      Rosette géométrique — ornement DA signature.
+      Inspirée des motifs des pendentifs YJ (chapelet, chaîne de taille).
+      Représente le "luxe africain" sans être kitch : une signature
+      subtile posée une fois, réutilisée sur tout le site.
+    -->
+    <svg class="hero-ornament" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <polygon points="60,6 72,34 102,34 79,53 88,81 60,64 32,81 41,53 18,34 48,34"
+               stroke="#9C7A3C" stroke-width="1.1" fill="none"/>
+      <polygon points="60,16 70,38 96,38 76,54 83,78 60,64 37,78 44,54 24,38 50,38"
+               stroke="#9C7A3C" stroke-width="0.55" fill="none" opacity="0.6"/>
+      <circle cx="60" cy="60" r="26" stroke="#9C7A3C" stroke-width="0.8" fill="none"/>
+      <circle cx="60" cy="60" r="4" fill="#9C7A3C"/>
+      <line x1="60" y1="30" x2="60" y2="6"   stroke="#9C7A3C" stroke-width="0.55"/>
+      <line x1="60" y1="90" x2="60" y2="114" stroke="#9C7A3C" stroke-width="0.55"/>
+      <line x1="6"  y1="60" x2="30" y2="60"  stroke="#9C7A3C" stroke-width="0.55"/>
+      <line x1="90" y1="60" x2="114" y2="60" stroke="#9C7A3C" stroke-width="0.55"/>
+    </svg>
+
+    <!-- Monogramme YJ en filigrane — fond de panel -->
+    <svg class="hero-filigrane" viewBox="0 0 380 380" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <circle cx="190" cy="178" r="130" stroke="#1A1610" stroke-width="1.6" fill="none"/>
+      <circle cx="190" cy="178" r="121" stroke="#1A1610" stroke-width="0.4" fill="none" opacity="0.5"/>
+      <!-- Losange sommet -->
+      <polygon points="190,34 201,50 190,63 179,50" fill="#1A1610"/>
+      <!-- Y -->
+      <text x="100" y="215" font-family="Georgia,serif" font-size="145" font-weight="700" fill="#1A1610">Y</text>
+      <!-- j -->
+      <text x="226" y="248" font-family="Georgia,serif" font-size="112" font-weight="400" font-style="italic" fill="#1A1610">j</text>
+    </svg>
+
+    <!-- Eyebrow -->
+    <p class="hero-eyebrow">Dakar &nbsp;·&nbsp; Joaillerie Africaine Contemporaine</p>
+
+    <!-- ── ◆ ── -->
+    <div class="hero-divider">
+      <span class="divider-rule"></span>
+      <span class="divider-gem">◆</span>
+      <span class="divider-rule rev"></span>
+    </div>
+
+    <!-- YASH -->
+    <h1 class="hero-title">YASH</h1>
+
+    <!-- JEWELRY -->
+    <p class="hero-subtitle">Jewelry</p>
+
+    <!-- Cormorant tagline -->
+    <p class="hero-tagline">
+      Chaque détail est une déclaration.<br>
+      Chaque pièce, une élégance intemporelle.
+    </p>
+
+    <!-- CTA -->
+    <a href="#" class="hero-cta">
+      <span class="hero-cta-label">Découvrir les Collections</span>
+      <span class="hero-cta-bar"></span>
+    </a>
+
+    <!-- Garanties bas de panel -->
+    <div class="hero-meta">
+      <p>Acier 316L &nbsp;·&nbsp; Plaqué Or 18K &nbsp;·&nbsp; Livraison Internationale</p>
+    </div>
+
+  </div><!-- /.hero-left -->
+
+
+  <!-- ─── Panel droit : image ─── -->
+  <div class="hero-right">
+
+    <img
+      class="hero-image"
+      src="assets/WhatsApp%20Image%202026-07-08%20at%204.02.47%20PM.jpeg"
+      alt="Sautoir Yash porté — Élégance, Luxe, Intemporel"
+      loading="eager"
+    >
+
+    <!-- Cadres d'angle dorés — motif tiré du catalogue -->
+    <div class="hero-frames" aria-hidden="true">
+      <div class="frame-corner tl"></div>
+      <div class="frame-corner tr"></div>
+      <div class="frame-corner bl"></div>
+      <div class="frame-corner br"></div>
+    </div>
+
+    <!-- Légende discrète -->
+    <div class="hero-caption">
+      <p>Sautoir Yash<br>Élégance &nbsp;·&nbsp; Luxe &nbsp;·&nbsp; Intemporel</p>
+    </div>
+
+    <!-- Indicateur scroll -->
+    <div class="scroll-cue" aria-hidden="true">
+      <div class="scroll-cue-line"></div>
+      <span class="scroll-cue-text">Scroll</span>
+    </div>
+
+  </div><!-- /.hero-right -->
+
+</section>
+
+
+<script>
+  /* Nav : transition au scroll */
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 48);
+  }, { passive: true });
+
+  /* Parallax subtil sur l'image hero — profondeur éditoriale */
+  const heroImg = document.querySelector('.hero-image');
+  if (heroImg && window.matchMedia('(min-width: 960px)').matches) {
+    window.addEventListener('scroll', () => {
+      const y = window.scrollY;
+      if (y < window.innerHeight) {
+        heroImg.style.transform = `scale(1) translateY(${y * 0.1}px)`;
+      }
+    }, { passive: true });
+  }
+</script>
+
+</body>
+</html>
