@@ -30,8 +30,9 @@ export default function CollectionsGrid() {
   return (
     <section className="bg-cream-2 py-24 px-8 md:px-14">
       <div className="max-w-6xl mx-auto mb-14">
+        {/* Eyebrow sur fond clair → token on-light-label */}
         <motion.p
-          className="font-jost font-light text-[9px] tracking-[0.36em] uppercase text-gold-deep mb-3"
+          className="font-jost font-light text-[9px] tracking-[0.36em] uppercase text-on-light-label mb-3"
           initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}
         >
           Nos Univers
@@ -40,7 +41,7 @@ export default function CollectionsGrid() {
           initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.1 }}
         >
-          <h2 className="font-playfair font-bold text-ink leading-[1.08] mb-4"
+          <h2 className="font-playfair font-bold text-on-light leading-[1.08] mb-4"
             style={{ fontSize: 'clamp(32px, 3.8vw, 52px)' }}
           >
             Les Collections
@@ -69,15 +70,15 @@ function CollCard({ card, h, col = '' }) {
       viewport={{ once: true }}
       transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
     >
-      <Link to={card.to} className="block w-full h-full no-underline">
+      <Link to={card.to} className="block w-full h-full">
         <img
           src={card.image}
           alt={card.label}
           className="w-full h-full object-cover transition-transform duration-[1200ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.04]"
           style={{ objectPosition: card.objectPos }}
         />
-        {/* Overlay dégradé garantissant lisibilité des titres */}
-        <div className="absolute inset-0 bg-gradient-to-t from-noir/75 via-noir/20 to-transparent" />
+        {/* Overlay garanti — lisibilité titre en toutes conditions */}
+        <div className="absolute inset-0 bg-gradient-to-t from-noir/80 via-noir/18 to-transparent" />
 
         {/* Cadres d'angle hover */}
         <div className="absolute inset-5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
@@ -88,10 +89,11 @@ function CollCard({ card, h, col = '' }) {
         </div>
 
         <div className="absolute bottom-7 left-7 right-7 z-10">
-          <p className="font-jost font-light text-[7.5px] tracking-[0.28em] uppercase text-gold/80 mb-1.5">
+          {/* Sub toujours sur fond sombre → on-dark-label */}
+          <p className="font-jost font-light text-[7.5px] tracking-[0.28em] uppercase text-on-dark-label mb-1.5">
             {card.sub}
           </p>
-          <h3 className="font-playfair font-bold text-blanc leading-tight text-[22px] drop-shadow-sm">
+          <h3 className="font-playfair font-bold text-on-dark leading-tight text-[22px]">
             {card.label}
           </h3>
           <div className="mt-3 flex items-center gap-2.5 opacity-0 group-hover:opacity-100 transition-all duration-400 translate-y-1.5 group-hover:translate-y-0">

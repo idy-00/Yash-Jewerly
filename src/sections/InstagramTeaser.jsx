@@ -1,12 +1,12 @@
 import { motion } from 'framer-motion'
 import Divider from '../components/Divider'
 
-// Uniquement les photos lifestyle pures — pas de screenshots catalogue avec texte marketing
+// Uniquement photos lifestyle — pas de screenshots catalogue
 const feed = [
-  { src: '/new-img-1.jpeg', pos: '55% 18%' }, // femme de dos, bagues
-  { src: '/new-img-2.jpeg', pos: '50% 38%' }, // mains bracelets
-  { src: '/new-img-3.jpeg', pos: '50% 28%' }, // chaînes cheville
-  { src: '/new-img-4.jpeg', pos: '50% 40%' }, // bague cauri
+  { src: '/new-img-1.jpeg', pos: '55% 18%' },
+  { src: '/new-img-2.jpeg', pos: '50% 38%' },
+  { src: '/new-img-3.jpeg', pos: '50% 28%' },
+  { src: '/new-img-4.jpeg', pos: '50% 40%' },
 ]
 
 export default function InstagramTeaser() {
@@ -16,13 +16,13 @@ export default function InstagramTeaser() {
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
           <div>
             <motion.p
-              className="font-jost font-light text-[9px] tracking-[0.36em] uppercase text-gold-deep mb-3"
+              className="font-jost font-light text-[9px] tracking-[0.36em] uppercase text-on-light-label mb-3"
               initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}
             >
               Instagram
             </motion.p>
             <motion.h2
-              className="font-playfair font-bold text-ink leading-[1.08]"
+              className="font-playfair font-bold text-on-light leading-[1.08]"
               style={{ fontSize: 'clamp(26px, 3vw, 40px)' }}
               initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
               transition={{ delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
@@ -34,16 +34,15 @@ export default function InstagramTeaser() {
           <a
             href="https://instagram.com/yash.jewelry"
             target="_blank" rel="noreferrer"
-            className="inline-flex flex-col gap-1.5 no-underline group w-fit mb-1"
+            className="inline-flex flex-col gap-1.5 group w-fit mb-1"
           >
-            <span className="font-jost font-light text-[9px] tracking-[0.26em] uppercase text-gold-deep transition-colors duration-300 group-hover:text-gold">
+            <span className="font-jost font-light text-[9px] tracking-[0.26em] uppercase text-on-light-label transition-colors duration-300 group-hover:text-on-light">
               Suivre sur Instagram
             </span>
-            <span className="h-px bg-gold-deep origin-left transition-transform duration-500 group-hover:scale-x-[1.25]" />
+            <span className="h-px bg-on-light-label origin-left transition-transform duration-500 group-hover:scale-x-[1.25]" />
           </a>
         </div>
 
-        {/* 4 photos carrées lifestyle — pas de screenshot catalogue */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
           {feed.map((f, i) => (
             <motion.a

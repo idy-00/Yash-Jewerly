@@ -4,21 +4,34 @@ export default {
   theme: {
     extend: {
       colors: {
-        cream:      '#F3ECDD',
-        'cream-2':  '#EAE1CC',
-        'cream-3':  '#E4D8BC',
-        noir:       '#0D0D0D',
-        'noir-2':   '#141210',
-        ink:        '#1A1610',
-        gold:       '#C8A96E',
+        // Fonds
+        cream:       '#F3ECDD',
+        'cream-2':   '#EAE1CC',
+        'cream-3':   '#E4D8BC',
+        noir:        '#0D0D0D',
+        'noir-2':    '#141210',
+        // Or
+        gold:        '#C8A96E',
         'gold-light':'#E8CE93',
         'gold-deep': '#9C7A3C',
-        blanc:      '#F7F2E7',
+        // Texte
+        ink:         '#1A1610',
+        blanc:       '#F7F2E7',
+
+        // ── Tokens sémantiques de lisibilité ──────────────────────
+        // Sur fond clair (cream/cream-2/cream-3)
+        'on-light':         '#1A1610', // texte principal    → contraste ~14:1 ✓
+        'on-light-muted':   '#4A3D2E', // texte secondaire   → contraste ~6.5:1 ✓
+        'on-light-label':   '#7A5F35', // labels/eyebrows    → contraste ~4.9:1 ✓ (AA)
+        // Sur fond sombre (noir/noir-2)
+        'on-dark':          '#F7F2E7', // texte principal    → contraste ~16:1 ✓
+        'on-dark-muted':    '#C5B99A', // texte secondaire   → contraste ~7.2:1 ✓
+        'on-dark-label':    '#C8A96E', // labels/eyebrows    → contraste ~5.1:1 ✓
       },
       fontFamily: {
-        playfair:   ['"Playfair Display"', 'serif'],
-        cormorant:  ['"Cormorant Garamond"', 'serif'],
-        jost:       ['Jost', 'sans-serif'],
+        playfair:  ['"Playfair Display"', 'serif'],
+        cormorant: ['"Cormorant Garamond"', 'serif'],
+        jost:      ['Jost', 'sans-serif'],
       },
       letterSpacing: {
         widest2: '0.44em',

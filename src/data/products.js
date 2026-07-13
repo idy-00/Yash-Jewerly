@@ -12,11 +12,13 @@ const IMG = {
   SIGNET_CUIR:    '/WhatsApp%20Image%202026-07-08%20at%203.54.37%20PM.jpeg',
   GOURMETTE_CHAPELET: '/WhatsApp%20Image%202026-07-08%20at%203.56.46%20PM.jpeg',
   CHAPELET:       '/WhatsApp%20Image%202026-07-08%20at%203.58.28%20PM.jpeg',
-  // Nouvelles images lifestyle
-  LIFESTYLE_BAGUES:    '/new-img-1.jpeg',   // femme de dos, bagues multiples dorées
-  LIFESTYLE_BRACELETS: '/new-img-2.jpeg',   // mains bracelets sculptés
-  LIFESTYLE_ETE:       '/new-img-3.jpeg',   // chaînes cheville
-  LIFESTYLE_BAGUE_CAURI: '/new-img-4.jpeg', // bague cauri gros plan
+  // Photo composite Perle Lumineuse — 3 modèles nommés dans l'image
+  PERLE_LUMINEUSE: '/WhatsApp%20Image%202026-07-08%20at%204.06.27%20PM.jpeg',
+  // Images lifestyle
+  LIFESTYLE_BAGUES:    '/new-img-1.jpeg',
+  LIFESTYLE_BRACELETS: '/new-img-2.jpeg',
+  LIFESTYLE_ETE:       '/new-img-3.jpeg',
+  LIFESTYLE_BAGUE_CAURI: '/new-img-4.jpeg',
 }
 
 export const femme = {
@@ -25,6 +27,7 @@ export const femme = {
   products: [
 
     // ── BAGUES — PERLE LUMINEUSE ──
+    // Vraie photo : composite 4.06.27 PM — 3 modèles distincts nommés dans l'image
     {
       id: 'f-perle-1',
       name: 'Éclat Doux',
@@ -35,10 +38,10 @@ export const femme = {
       material: 'Acier inoxydable 316L plaqué or 18K',
       stone: 'Perle lumineuse',
       price: 24500,
-      image: IMG.LIFESTYLE_BAGUE_CAURI,
-      objectPosition: '50% 38%',
+      image: IMG.PERLE_LUMINEUSE,
+      objectPosition: '75% 14%',  // Modèle 1 — quadrant haut droite
       badge: null,
-      placeholder: true,
+      placeholder: false,
     },
     {
       id: 'f-perle-2',
@@ -50,10 +53,10 @@ export const femme = {
       material: 'Acier inoxydable 316L plaqué or 18K',
       stone: 'Perle lumineuse + zircons',
       price: 27500,
-      image: IMG.LIFESTYLE_BAGUES,
-      objectPosition: '55% 22%',
+      image: IMG.PERLE_LUMINEUSE,
+      objectPosition: '18% 80%',  // Modèle 2 — quadrant bas gauche
       badge: null,
-      placeholder: true,
+      placeholder: false,
     },
     {
       id: 'f-perle-3',
@@ -65,10 +68,10 @@ export const femme = {
       material: 'Acier inoxydable 316L plaqué or 18K',
       stone: 'Perle lumineuse',
       price: 29500,
-      image: IMG.LIFESTYLE_BAGUE_CAURI,
-      objectPosition: '60% 55%',
+      image: IMG.PERLE_LUMINEUSE,
+      objectPosition: '78% 82%',  // Modèle 3 — quadrant bas droite
       badge: 'Édition Limitée',
-      placeholder: true,
+      placeholder: false,
     },
 
     // ── BRACELETS ──

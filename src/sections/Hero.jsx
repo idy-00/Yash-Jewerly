@@ -54,7 +54,7 @@ export default function Hero() {
 
         <motion.p
           {...stagger(3)}
-          className="font-cormorant italic font-light text-ink/50 leading-[1.85] mb-12 max-w-[280px]"
+          className="font-cormorant italic font-light text-on-light-muted leading-[1.85] mb-12 max-w-[280px]"
           style={{ fontSize: 'clamp(13px, 1.15vw, 16.5px)' }}
         >
           Chaque détail est une déclaration.<br />
@@ -66,7 +66,7 @@ export default function Hero() {
         </motion.div>
 
         <motion.p
-          className="absolute bottom-9 left-14 font-jost font-extralight text-[7.5px] tracking-[0.28em] uppercase text-ink/28"
+          className="absolute bottom-9 left-14 font-jost font-extralight text-[7.5px] tracking-[0.28em] uppercase text-on-light-muted/60"
           initial={{ opacity: 0 }} animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 1.3 }}
         >

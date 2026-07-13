@@ -13,7 +13,6 @@ export default function BoutiqueFemme() {
 
   return (
     <>
-      {/* Hero page — image lifestyle bracelets */}
       <section className="relative bg-cream-2 pt-28 pb-20 px-8 md:px-14 overflow-hidden">
         <div
           className="absolute right-0 top-0 bottom-0 w-[40%] bg-cover bg-center max-md:hidden"
@@ -23,13 +22,13 @@ export default function BoutiqueFemme() {
 
         <div className="max-w-6xl mx-auto relative z-10">
           <motion.p
-            className="font-jost font-light text-[9px] tracking-[0.36em] uppercase text-gold-deep mb-4"
-            initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.7 }}
+            className="font-jost font-light text-[9px] tracking-[0.36em] uppercase text-on-light-label mb-4"
+            initial={{ opacity: 0 }} animate={{ opacity: 1 }}
           >
             Collections
           </motion.p>
           <motion.h1
-            className="font-playfair font-bold text-ink leading-[1.05] mb-5"
+            className="font-playfair font-bold text-on-light leading-[1.05] mb-5"
             style={{ fontSize: 'clamp(38px, 5vw, 70px)' }}
             initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
@@ -38,7 +37,7 @@ export default function BoutiqueFemme() {
           </motion.h1>
           <Divider className="justify-start mb-5" />
           <motion.p
-            className="font-cormorant italic font-light text-ink/48 text-[15px] leading-[1.82] max-w-md"
+            className="font-cormorant italic font-light text-on-light-muted text-[15px] leading-[1.82] max-w-md"
             initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.3 }}
           >
             Bagues, bracelets, sautoir, chaîne de taille —
@@ -47,8 +46,8 @@ export default function BoutiqueFemme() {
         </div>
       </section>
 
-      {/* Filtres */}
-      <nav className="bg-cream border-b border-gold/10 px-8 md:px-14">
+      {/* Filtres — onglets sans couleurs parasites */}
+      <nav className="bg-cream px-8 md:px-14" aria-label="Filtres">
         <div className="max-w-6xl mx-auto flex overflow-x-auto">
           {femme.categories.map(cat => (
             <button
@@ -57,8 +56,8 @@ export default function BoutiqueFemme() {
               className={`flex-shrink-0 font-jost font-light text-[8.5px] tracking-[0.22em] uppercase
                 px-5 py-4 border-b transition-all duration-250 cursor-pointer bg-transparent whitespace-nowrap
                 ${active === cat
-                  ? 'border-gold text-gold-deep'
-                  : 'border-transparent text-ink/32 hover:text-ink/60'
+                  ? 'border-gold/40 text-on-light'
+                  : 'border-transparent text-on-light-muted/60 hover:text-on-light-muted'
                 }`}
             >
               {cat}
@@ -67,7 +66,6 @@ export default function BoutiqueFemme() {
         </div>
       </nav>
 
-      {/* Grille */}
       <section className="bg-cream py-14 px-8 md:px-14">
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-5 gap-y-12">

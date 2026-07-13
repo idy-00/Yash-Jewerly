@@ -14,13 +14,13 @@
     overflow-x: hidden;
   }
 
-  /* Reset global des liens — empêche les couleurs bleu/violet/rouge de navigateur */
-  a {
+  /* ── Reset global : tue les couleurs navigateur sur liens ET boutons ── */
+  a, button {
     color: inherit;
     text-decoration: none;
   }
 
-  /* Grain papier premium — sur tout le site */
+  /* Grain papier premium */
   body::after {
     content: '';
     position: fixed;
@@ -36,7 +36,7 @@
   .clip-diagonal {
     clip-path: polygon(4.5% 0, 100% 0, 100% 100%, 0% 100%);
   }
-  .font-playfair { font-family: 'Playfair Display', serif; }
+  .font-playfair  { font-family: 'Playfair Display', serif; }
   .font-cormorant { font-family: 'Cormorant Garamond', serif; }
-  .font-jost { font-family: 'Jost', sans-serif; }
+  .font-jost      { font-family: 'Jost', sans-serif; }
 }

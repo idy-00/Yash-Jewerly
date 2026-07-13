@@ -2,13 +2,11 @@ import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { formatPrice } from '../data/products'
 
-// Placeholder élégant — monogramme YJ en filigrane, fond marque
 function PlaceholderVisual({ dark }) {
   return (
     <div className={`w-full h-full flex flex-col items-center justify-center relative
       ${dark ? 'bg-[#0e0e0e]' : 'bg-[#ede4d1]'}`}
     >
-      {/* Monogramme YJ filigrane */}
       <svg
         viewBox="0 0 120 120" fill="none"
         className="absolute inset-0 w-[65%] h-[65%] m-auto opacity-[0.08]"
@@ -21,12 +19,11 @@ function PlaceholderVisual({ dark }) {
         <text x="64" y="90" fontFamily="Georgia,serif" fontSize="40" fontWeight="400"
           fontStyle="italic" fill={dark ? '#C8A96E' : '#7A5E28'}>j</text>
       </svg>
-      {/* Badge */}
       <span className={`relative z-10 font-jost font-light text-[7.5px] tracking-[0.32em] uppercase
         px-4 py-1.5 border
         ${dark
-          ? 'text-gold/70 border-gold/25 bg-noir/60'
-          : 'text-gold-deep/70 border-gold/30 bg-cream/70'
+          ? 'text-on-dark-label border-gold/25 bg-noir/60'
+          : 'text-on-light-label border-gold-deep/30 bg-cream/70'
         }`}
       >
         Bientôt disponible
@@ -46,7 +43,6 @@ export default function ProductCard({ product, index = 0, dark = false }) {
       viewport={{ once: true }}
       transition={{ duration: 0.75, delay: 0.06 * (index % 6), ease: [0.22, 1, 0.36, 1] }}
     >
-      {/* Zone image */}
       <div className="relative overflow-hidden aspect-[3/4] mb-3.5">
         {isPlaceholder ? (
           <PlaceholderVisual dark={dark} />
@@ -61,7 +57,6 @@ export default function ProductCard({ product, index = 0, dark = false }) {
             <div className={`absolute inset-0 transition-colors duration-450
               ${dark ? 'bg-noir/0 group-hover:bg-noir/16' : 'bg-noir/0 group-hover:bg-noir/10'}`}
             />
-            {/* Cadres d'angle au hover */}
             <div className="absolute inset-3.5 opacity-0 group-hover:opacity-100 transition-opacity duration-450 pointer-events-none">
               {['top-0 left-0 border-t border-l','top-0 right-0 border-t border-r',
                 'bottom-0 left-0 border-b border-l','bottom-0 right-0 border-b border-r'].map((c, i) => (
@@ -71,15 +66,16 @@ export default function ProductCard({ product, index = 0, dark = false }) {
           </>
         )}
 
-        {/* Badge */}
         {product.badge && (
           <span className={`absolute top-3 left-3 font-jost font-light text-[7px] tracking-[0.22em] uppercase px-2.5 py-1 border
-            ${dark ? 'text-gold border-gold/20 bg-noir/85' : 'text-gold-deep border-gold/20 bg-cream/90'}`}>
+            ${dark
+              ? 'text-on-dark-label border-gold/20 bg-noir/85'
+              : 'text-on-light-label border-gold-deep/25 bg-cream/90'
+            }`}>
             {product.badge}
           </span>
         )}
 
-        {/* Pastille pierre signet */}
         {product.stoneColor && !isPlaceholder && (
           <span
             className="absolute top-3 right-3 w-3 h-3 rounded-full"
@@ -89,18 +85,18 @@ export default function ProductCard({ product, index = 0, dark = false }) {
         )}
       </div>
 
-      {/* Texte */}
       <div>
+        {/* Collection tag — contraste assuré selon fond */}
         <p className={`font-jost font-light text-[7px] tracking-[0.24em] uppercase mb-1
-          ${dark ? 'text-gold/45' : 'text-gold-deep/60'}`}>
+          ${dark ? 'text-on-dark-label' : 'text-on-light-label'}`}>
           {product.collection}
         </p>
         <h3 className={`font-playfair font-semibold text-[14.5px] leading-tight mb-1
-          ${dark ? 'text-blanc' : 'text-ink'}`}>
+          ${dark ? 'text-on-dark' : 'text-on-light'}`}>
           {product.name}
         </h3>
         <p className={`font-jost font-light text-[10.5px]
-          ${dark ? 'text-blanc/38' : 'text-ink/40'}`}>
+          ${dark ? 'text-on-dark-muted' : 'text-on-light-muted'}`}>
           {formatPrice(product.price)}
         </p>
       </div>
@@ -110,7 +106,7 @@ export default function ProductCard({ product, index = 0, dark = false }) {
   if (isPlaceholder) return inner
 
   return (
-    <Link to={`/produit/${product.id}`} className="no-underline block">
+    <Link to={`/produit/${product.id}`} className="block">
       {inner}
     </Link>
   )
