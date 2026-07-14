@@ -18,7 +18,7 @@ export default function Navbar() {
 
   return (
     <>
-      <nav className="fixed top-0 left-0 right-0 z-[200] flex items-center justify-between px-8 md:px-14 py-2 bg-cream border-b border-gold/15">
+      <nav className="fixed top-0 left-0 right-0 z-[200] flex items-center justify-between px-8 md:px-14 py-2 bg-[#FDFBF7] border-b border-gold/20">
 
         {/* Logo transparent sur fond crème */}
         <Link to="/" className="flex-shrink-0" aria-label="Accueil Yash Jewelry">

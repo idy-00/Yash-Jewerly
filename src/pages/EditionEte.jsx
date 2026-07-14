@@ -15,7 +15,7 @@ export default function EditionEte() {
           className="absolute inset-0 w-full h-full object-cover"
           style={{ objectPosition: '50% 22%' }}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-noir/10 via-transparent to-noir/85" />
+        <div className="absolute inset-0 bg-gradient-to-b from-noir/5 via-transparent to-noir/70" />
         <div className="max-w-6xl mx-auto px-8 md:px-14 relative z-10 pt-28">
           <motion.p
             className="font-jost font-light text-[9px] tracking-[0.36em] uppercase text-gold mb-4"

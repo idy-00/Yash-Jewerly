@@ -30,7 +30,7 @@ export default function Histoire() {
       <section className="relative min-h-[58vh] bg-noir flex items-end pb-16 overflow-hidden">
         <img src="/new-img-1.jpeg" alt="Yash Jewelry — Notre Histoire"
           className="absolute inset-0 w-full h-full object-cover" style={{ objectPosition: '55% 15%' }} />
-        <div className="absolute inset-0 bg-gradient-to-b from-noir/30 via-noir/10 to-noir/82" />
+        <div className="absolute inset-0 bg-gradient-to-b from-noir/20 via-transparent to-noir/70" />
         <div className="max-w-6xl mx-auto px-8 md:px-14 relative z-10 pt-28">
           <motion.p className="font-jost font-light text-[9px] tracking-[0.36em] uppercase text-on-dark-label mb-4"
             initial={{ opacity: 0 }} animate={{ opacity: 1 }}>

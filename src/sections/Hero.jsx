@@ -87,7 +87,7 @@ export default function Hero() {
           style={{ objectPosition: '55% 18%', transform: 'scale(1.04)', transformOrigin: 'center top' }}
           loading="eager"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-noir/18 via-transparent to-transparent pointer-events-none z-10" />
+        <div className="absolute inset-0 bg-gradient-to-r from-noir/10 via-transparent to-transparent pointer-events-none z-10" />
 
         <motion.div
           initial={{ opacity: 0 }} animate={{ opacity: 1 }}
@@ -125,7 +125,7 @@ export default function Hero() {
           className="w-full h-full object-cover"
           style={{ objectPosition: '55% 15%' }}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-noir/20 via-noir/10 to-noir/75" />
+        <div className="absolute inset-0 bg-gradient-to-b from-noir/15 via-transparent to-noir/60" />
         <div className="absolute bottom-20 left-6 right-6 z-10">
           <h1 className="font-playfair font-black text-blanc leading-[0.88] mb-1.5" style={{ fontSize: '82px' }}>
             YASH

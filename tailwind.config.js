@@ -8,8 +8,9 @@ export default {
         cream:       '#F3ECDD',
         'cream-2':   '#EAE1CC',
         'cream-3':   '#E4D8BC',
-        noir:        '#0D0D0D',
-        'noir-2':    '#141210',
+        // Sombres — brun chaud, pas noir froid (moins oppressant)
+        noir:        '#1C1810',
+        'noir-2':    '#231F18',
         // Or
         gold:        '#C8A96E',
         'gold-light':'#E8CE93',
@@ -18,15 +19,13 @@ export default {
         ink:         '#1A1610',
         blanc:       '#F7F2E7',
 
-        // ── Tokens sémantiques de lisibilité ──────────────────────
-        // Sur fond clair (cream/cream-2/cream-3)
-        'on-light':         '#1A1610', // texte principal    → contraste ~14:1 ✓
-        'on-light-muted':   '#4A3D2E', // texte secondaire   → contraste ~6.5:1 ✓
-        'on-light-label':   '#7A5F35', // labels/eyebrows    → contraste ~4.9:1 ✓ (AA)
-        // Sur fond sombre (noir/noir-2)
-        'on-dark':          '#F7F2E7', // texte principal    → contraste ~16:1 ✓
-        'on-dark-muted':    '#C5B99A', // texte secondaire   → contraste ~7.2:1 ✓
-        'on-dark-label':    '#C8A96E', // labels/eyebrows    → contraste ~5.1:1 ✓
+        // ── Tokens sémantiques de lisibilité ──
+        'on-light':         '#1A1610', // contraste ~14:1 sur cream ✓
+        'on-light-muted':   '#4A3D2E', // contraste ~6.5:1 ✓
+        'on-light-label':   '#7A5F35', // contraste ~4.9:1 AA ✓
+        'on-dark':          '#F7F2E7', // contraste ~12:1 sur noir ✓
+        'on-dark-muted':    '#C5B99A', // contraste ~6.8:1 ✓
+        'on-dark-label':    '#C8A96E', // contraste ~5.0:1 ✓
       },
       fontFamily: {
         playfair:  ['"Playfair Display"', 'serif'],

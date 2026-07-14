@@ -78,7 +78,7 @@ function CollCard({ card, h, col = '' }) {
           style={{ objectPosition: card.objectPos }}
         />
         {/* Overlay garanti — lisibilité titre en toutes conditions */}
-        <div className="absolute inset-0 bg-gradient-to-t from-noir/80 via-noir/18 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-noir/65 via-noir/10 to-transparent" />
 
         {/* Cadres d'angle hover */}
         <div className="absolute inset-5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
