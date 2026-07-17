@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { AnimatePresence, motion } from 'framer-motion'
+import { useCart } from '../context/CartContext'
 
 const links = [
   { label: 'Femme',    to: '/boutique-femme' },
@@ -13,6 +14,7 @@ const links = [
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false)
   const { pathname } = useLocation()
+  const { totalItems, openCart } = useCart()
 
   useEffect(() => setMenuOpen(false), [pathname])
 
@@ -55,18 +57,55 @@ export default function Navbar() {
               Boutique
             </Link>
           </li>
+          {/* Panier */}
+          <li>
+            <button
+              onClick={openCart}
+              className="relative bg-transparent border-none cursor-pointer p-1 text-on-light-muted hover:text-on-light transition-colors"
+              aria-label="Ouvrir le panier"
+            >
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4">
+                <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z" />
+                <line x1="3" y1="6" x2="21" y2="6" />
+                <path d="M16 10a4 4 0 01-8 0" />
+              </svg>
+              {totalItems > 0 && (
+                <span className="absolute -top-1 -right-1 w-4 h-4 rounded-full bg-gold text-noir font-jost text-[8px] font-medium flex items-center justify-center">
+                  {totalItems}
+                </span>
+              )}
+            </button>
+          </li>
         </ul>
 
-        {/* Burger */}
-        <button
-          className="md:hidden flex flex-col gap-[5px] bg-transparent border-none cursor-pointer p-1"
-          onClick={() => setMenuOpen(v => !v)}
-          aria-label="Menu"
-        >
-          <span className="block w-[22px] h-px bg-ink" />
-          <span className="block w-[22px] h-px bg-ink" />
-          <span className="block w-[22px] h-px bg-ink" />
-        </button>
+        {/* Mobile: cart + burger */}
+        <div className="md:hidden flex items-center gap-4">
+          <button
+            onClick={openCart}
+            className="relative bg-transparent border-none cursor-pointer p-1 text-ink/70"
+            aria-label="Ouvrir le panier"
+          >
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4">
+              <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z" />
+              <line x1="3" y1="6" x2="21" y2="6" />
+              <path d="M16 10a4 4 0 01-8 0" />
+            </svg>
+            {totalItems > 0 && (
+              <span className="absolute -top-1 -right-1 w-3.5 h-3.5 rounded-full bg-gold text-noir font-jost text-[7px] font-medium flex items-center justify-center">
+                {totalItems}
+              </span>
+            )}
+          </button>
+          <button
+            className="flex flex-col gap-[5px] bg-transparent border-none cursor-pointer p-1"
+            onClick={() => setMenuOpen(v => !v)}
+            aria-label="Menu"
+          >
+            <span className="block w-[22px] h-px bg-ink" />
+            <span className="block w-[22px] h-px bg-ink" />
+            <span className="block w-[22px] h-px bg-ink" />
+          </button>
+        </div>
       </nav>
 
       {/* Menu mobile */}

@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { formatPrice } from '../data/products'
+import { useCart } from '../context/CartContext'
 
 function PlaceholderVisual({ dark }) {
   return (
@@ -34,6 +35,7 @@ function PlaceholderVisual({ dark }) {
 
 export default function ProductCard({ product, index = 0, dark = false }) {
   const isPlaceholder = product.placeholder
+  const { addItem } = useCart()
 
   const inner = (
     <motion.article
@@ -57,7 +59,7 @@ export default function ProductCard({ product, index = 0, dark = false }) {
             <div className={`absolute inset-0 transition-colors duration-450
               ${dark ? 'bg-noir/0 group-hover:bg-noir/16' : 'bg-noir/0 group-hover:bg-noir/10'}`}
             />
-            <div className="absolute inset-3.5 opacity-0 group-hover:opacity-100 transition-opacity duration-450 pointer-events-none">
+            <div className="absolute inset-3.5 opacity-0 group-hover:opacity-100 transition-opacity duration-450 pointer-events-none max-md:hidden">
               {['top-0 left-0 border-t border-l','top-0 right-0 border-t border-r',
                 'bottom-0 left-0 border-b border-l','bottom-0 right-0 border-b border-r'].map((c, i) => (
                 <span key={i} className={`absolute w-4 h-4 ${c} ${dark ? 'border-gold/40' : 'border-gold/45'}`} />
@@ -76,6 +78,34 @@ export default function ProductCard({ product, index = 0, dark = false }) {
           </span>
         )}
 
+        {/* Desktop: hover reveal / Mobile: animate in with card */}
+        {!isPlaceholder && product.price && (
+          <>
+            {/* Desktop button — hidden, appears on hover */}
+            <button
+              onClick={(e) => { e.preventDefault(); e.stopPropagation(); addItem(product) }}
+              className={`absolute bottom-3 left-3 right-3 font-jost font-light text-[8px] tracking-[0.22em] uppercase py-2.5 border-none cursor-pointer
+                hidden md:block opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300
+                ${dark ? 'bg-gold text-noir hover:bg-gold-light' : 'bg-ink text-cream hover:bg-ink/85'}`}
+            >
+              Ajouter au panier
+            </button>
+            {/* Mobile button — animates in with the card */}
+            <motion.button
+              onClick={(e) => { e.preventDefault(); e.stopPropagation(); addItem(product) }}
+              className={`absolute bottom-3 left-3 right-3 font-jost font-light text-[8px] tracking-[0.22em] uppercase py-2.5 border-none cursor-pointer
+                md:hidden
+                ${dark ? 'bg-gold text-noir' : 'bg-ink text-cream'}`}
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.06 * (index % 6) + 0.35, ease: [0.22, 1, 0.36, 1] }}
+            >
+              Ajouter au panier
+            </motion.button>
+          </>
+        )}
+
         {product.stoneColor && !isPlaceholder && (
           <span
             className="absolute top-3 right-3 w-3 h-3 rounded-full"
@@ -86,7 +116,6 @@ export default function ProductCard({ product, index = 0, dark = false }) {
       </div>
 
       <div>
-        {/* Collection tag — contraste assuré selon fond */}
         <p className={`font-jost font-light text-[7px] tracking-[0.24em] uppercase mb-1
           ${dark ? 'text-on-dark-label' : 'text-on-light-label'}`}>
           {product.collection}
@@ -97,7 +126,7 @@ export default function ProductCard({ product, index = 0, dark = false }) {
         </h3>
         <p className={`font-jost font-light text-[10.5px]
           ${dark ? 'text-on-dark-muted' : 'text-on-light-muted'}`}>
-          {formatPrice(product.price)}
+          {formatPrice(product.price, 'CFA', product.priceUnit)}
         </p>
       </div>
     </motion.article>

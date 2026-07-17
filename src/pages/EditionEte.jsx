@@ -1,16 +1,12 @@
 import { motion } from 'framer-motion'
-import { femme } from '../data/products'
-import ProductCard from '../components/ProductCard'
 import Divider from '../components/Divider'
-
-const eteProducts = femme.products.filter(p => p.category === 'Édition Été')
 
 export default function EditionEte() {
   return (
     <>
       <section className="relative min-h-[52vh] bg-noir flex items-end pb-16 overflow-hidden">
         <img
-          src="/new-img-3.jpeg"
+          src="/editorial-plage.jpeg"
           alt="Édition Été — Yash Jewelry"
           className="absolute inset-0 w-full h-full object-cover"
           style={{ objectPosition: '50% 22%' }}
@@ -36,23 +32,19 @@ export default function EditionEte() {
             className="font-cormorant italic font-light text-blanc/50 text-[15px] leading-[1.82] max-w-lg"
             initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.3 }}
           >
-            Tropicana, Lagune, Corail Chic, Azuréa, Boho Chic, Fleur d'Été —
-            l'éclat doré de l'été, capturé en métal.
+            Collection estivale en préparation — bientôt disponible.
           </motion.p>
         </div>
       </section>
 
-      <div className="bg-cream border-b border-gold/10 px-8 md:px-14 py-3">
-        <p className="max-w-6xl mx-auto font-jost font-light text-[8px] tracking-[0.2em] uppercase text-gold/50">
-          Photos de la collection à venir
-        </p>
-      </div>
-
-      <section className="bg-cream py-14 px-8 md:px-14">
-        <div className="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-3 gap-x-5 gap-y-12">
-          {eteProducts.map((p, i) => (
-            <ProductCard key={p.id} product={p} index={i} dark={false} />
-          ))}
+      <section className="bg-cream py-24 px-8 md:px-14">
+        <div className="max-w-md mx-auto text-center">
+          <p className="font-cormorant italic text-ink/35 text-[18px] mb-6">
+            La collection Été arrive bientôt avec de nouvelles pièces exclusives.
+          </p>
+          <p className="font-jost font-light text-[8.5px] tracking-[0.24em] uppercase text-gold-deep/50">
+            Restez connecté pour la révélation
+          </p>
         </div>
       </section>
     </>

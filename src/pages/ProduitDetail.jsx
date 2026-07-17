@@ -1,6 +1,7 @@
 import { useParams, Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { femme, homme, formatPrice } from '../data/products'
+import { useCart } from '../context/CartContext'
 import Divider from '../components/Divider'
 import FrameCorners from '../components/FrameCorners'
 
@@ -9,6 +10,7 @@ const ease = [0.22, 1, 0.36, 1]
 
 export default function ProduitDetail() {
   const { id } = useParams()
+  const { addItem } = useCart()
   const product = allProducts.find(p => p.id === id)
 
   if (!product) {
@@ -117,7 +119,7 @@ export default function ProduitDetail() {
               <p className={`font-playfair font-bold mb-8 ${isDark ? 'text-gold-light' : 'text-ink'}`}
                 style={{ fontSize: 'clamp(24px, 3vw, 36px)' }}
               >
-                {formatPrice(product.price)}
+                {formatPrice(product.price, 'CFA', product.priceUnit)}
               </p>
 
               {/* Composition */}
@@ -147,6 +149,17 @@ export default function ProduitDetail() {
                   ))}
                 </div>
               </div>
+
+              {/* Ajouter au panier */}
+              {product.price && (
+                <button
+                  onClick={() => addItem(product)}
+                  className={`w-full py-3.5 font-jost font-light text-[9px] tracking-[0.28em] uppercase border-none cursor-pointer transition-all duration-300 mb-4
+                    ${isDark ? 'bg-gold text-noir hover:bg-gold-light' : 'bg-ink text-cream hover:bg-ink/85'}`}
+                >
+                  Ajouter au panier
+                </button>
+              )}
 
               {/* CTA WhatsApp */}
               <a

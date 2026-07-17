@@ -3,6 +3,7 @@ import { useEffect } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
+import CartDrawer from './components/CartDrawer'
 import Home from './pages/Home'
 import BoutiqueFemme from './pages/BoutiqueFemme'
 import BoutiqueHomme from './pages/BoutiqueHomme'
@@ -35,6 +36,7 @@ export default function App() {
     <>
       <ScrollToTop />
       <Navbar />
+      <CartDrawer />
       <AnimatePresence mode="wait">
         <Routes location={location} key={location.pathname}>
           <Route path="/" element={<PageTransition><Home /></PageTransition>} />
